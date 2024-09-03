@@ -22,27 +22,32 @@
   font-style: italic;
 }
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 
 body{
-  font-family: 'Galliard', sans-serif;
+  font-family: 'Galliard', sans-serif!important;
 }
 
 .h1, h2, h3, h4, h5, h6{
-  font-family: "Galliard";
+  font-family: 'Galliard', sans-serif!important;
   font-weight: 500;
 }
 
 p, span, button, select, option, a, div, li{
-  font-family: 'Galliard', sans-serif;
+  font-family: 'Galliard', sans-serif!important;
 }
 
-.heading{
-  font-family: "Galliard";
-  font-style: italic;
-  font-weight: 500;
-  font-size: 40px;
-  color: #2B354F;
-  line-height: 20.02px;
+ul, li{
+  list-style: none;
+  text-decoration: none;
+}
+
+a{
+  text-decoration: none;
 }
 
