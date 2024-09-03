@@ -191,7 +191,7 @@ const Review = () => {
       {/* Review Cart */}
       <Box sx={{marginBottom: "50px", }}>
       {reviewData.map(item => (
-        <Box sx={{padding: "10px 0px", borderBottom: "1px solid #DCD2BB", }}>
+        <Box key={item.id} sx={{padding: "10px 0px", borderBottom: "1px solid #DCD2BB", }}>
           <ReviewCart date={item.data} name={item.name} productName={item.productName} ratingText={item.ratingText} ratingValue={item.ratingValue} key={item.id}/>
         </Box>
       ))}
