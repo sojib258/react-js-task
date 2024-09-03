@@ -12,6 +12,7 @@ const Benefit = () => {
     <Box
       sx={{
         padding: { xs: "10px 20px", sm: "10px 80px" },
+        borderBottom: "1px solid #DCD2BB"
       }}
     >
       <Grid container>

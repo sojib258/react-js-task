@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import Header from "../components/Header";
 import Benefit from "../components/Benefit";
+import Banner from "../components/Banner";
 
 
 const SingleProduct = () => {
@@ -15,6 +16,9 @@ const SingleProduct = () => {
 
         {/* Benefit Section */}
         <Benefit/>
+
+        {/* Banner Section */}
+        <Banner/>
       </Box>
     )
 }
