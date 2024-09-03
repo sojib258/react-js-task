@@ -4,6 +4,7 @@ import Benefit from "../components/Benefit";
 import Banner from "../components/Banner";
 import RelatedProduct from "../components/RelatedProduct";
 import Review from "../components/Review";
+import ConsultationSection from "../components/Consultation";
 
 
 const SingleProduct = () => {
@@ -27,6 +28,9 @@ const SingleProduct = () => {
 
         {/* Revieww Section */}
         <Review/>
+
+        {/* Consultation Section */}
+        <ConsultationSection/>
       </Box>
     )
 }
