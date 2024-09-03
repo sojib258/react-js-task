@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Benefit from "../components/Benefit";
 import Banner from "../components/Banner";
 import RelatedProduct from "../components/RelatedProduct";
+import Review from "../components/Review";
 
 
 const SingleProduct = () => {
@@ -23,6 +24,9 @@ const SingleProduct = () => {
 
         {/* Related Product */}
         <RelatedProduct/>
+
+        {/* Revieww Section */}
+        <Review/>
       </Box>
     )
 }

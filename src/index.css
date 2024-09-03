@@ -31,6 +31,7 @@
 
 body{
   font-family: 'Galliard', sans-serif!important;
+  background-color: #fffff6;
 }
 
 .h1, h2, h3, h4, h5, h6{
@@ -38,7 +39,7 @@ body{
   font-weight: 500;
 }
 
-p, span, button, select, option, a, div, li{
+p, span, button, select, option, a, div, li, input{
   font-family: 'Galliard', sans-serif!important;
 }
 
