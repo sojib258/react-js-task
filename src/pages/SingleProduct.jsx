@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Header from "../components/Header";
 import Benefit from "../components/Benefit";
 import Banner from "../components/Banner";
+import RelatedProduct from "../components/RelatedProduct";
 
 
 const SingleProduct = () => {
@@ -19,6 +20,9 @@ const SingleProduct = () => {
 
         {/* Banner Section */}
         <Banner/>
+
+        {/* Related Product */}
+        <RelatedProduct/>
       </Box>
     )
 }

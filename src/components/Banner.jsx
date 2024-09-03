@@ -5,12 +5,14 @@ import Grid from "@mui/material/Grid";
 
 
 const Banner = () => {
+
+
   return (
     <Box
      sx={{
         backgroundColor: "#fffff6",
         padding: {xs: "20px 0px", sm: "40px 0px"},
-        
+        borderBottom: "1px solid #DCD2BB"
       }}
       >
       <Grid container> 
