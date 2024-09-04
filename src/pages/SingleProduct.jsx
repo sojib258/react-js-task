@@ -6,6 +6,7 @@ import RelatedProduct from "../components/RelatedProduct";
 import Review from "../components/Review";
 import ConsultationSection from "../components/Consultation";
 import PromotionalInfo from "../components/PromotionalInfo";
+import Footer from "../components/Footer";
 
 
 const SingleProduct = () => {
@@ -35,6 +36,9 @@ const SingleProduct = () => {
 
         {/* Promotional Info Section */}
         <PromotionalInfo/>
+
+        {/* Footer Section */}
+        <Footer/>
       </Box>
     )
 }
