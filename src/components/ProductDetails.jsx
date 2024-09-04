@@ -3,19 +3,22 @@ import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import Rating from "@mui/material/Rating";
 import ButtonLabel from "./reusableComp/ButtonLabel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RadioLabel from "./reusableComp/RadioLabel";
 import SelectableItem from "./SelectableOffer";
+
 import InfoLabel from "./reusableComp/InfoLabel";
 import CustomPaging from "./Carousel";
 
 
 const ProductDetails = () => {
 
-    const [isSelect, setIsSelect] = useState(null)
+    const [selectSize, setSelectSize] = useState(null)
     const [selectedValue, setSelectedValue] = useState('');
     const [offerId, setOfferId] = useState(1);
+    const [cart, setCart] = useState([]);
 
+    
 
     const options = [
       { id: 1, value: "option1", label: "Option 1" },
@@ -82,12 +85,48 @@ const ProductDetails = () => {
   };
 
   const handleToggle = (id) => {
-    setIsSelect(id);
+    setSelectSize(id);
   };
 
   const handleRadioChange = (event) => {
     setSelectedValue(event.target.value);
   };
+
+// for adding to cart
+const addToCart = (newProduct) => {
+    if (!selectSize || !selectedValue) {
+      alert("You didn't select the Size and Flavor. Please select them before adding to the cart.");
+      return; // Exit the function to prevent adding an incomplete product.
+    }
+  
+    const existingProduct = cart.find((item) => item.id === newProduct.id);
+    let updatedCart;
+  
+    if (existingProduct) {
+      updatedCart = cart.map((item) =>
+        item.id === newProduct.id
+          ? { ...item, quantity: item.quantity + newProduct.quantity }
+          : item
+      );
+    } else {
+      updatedCart = [...cart, newProduct];
+    }
+  
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+  
+
+  //   Load cart data from localStorage
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(savedCart);
+  }, [])
+
+//   Save cart data to localStorage whenever cart state changes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <Box sx={{
@@ -133,10 +172,10 @@ const ProductDetails = () => {
                 <Typography sx={{fontSize: "16px", lineHeight: "20.02px", color: "#2B354F", marginRight: "25px"}}>Select Size:</Typography>
                 
                 {sizes.map(item => (
-                  <Box sx={{margin: "5px 5px"}}> 
+                  <Box key={item.id} sx={{margin: "5px 5px"}}> 
                     <ButtonLabel key={item.id}
                     text={item.text}
-                    isSelected={isSelect === item.id}
+                    isSelected={selectSize === item.id}
                     onClick={() => handleToggle(item.id)}/>
                   </Box>
                 ))}
@@ -153,9 +192,15 @@ const ProductDetails = () => {
 
             {/* Add to Cart Button */}
 
-            <Box sx={{width: "100%", height: "auto", padding: "10px 20px", display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "#164F49", marginBottom: "16px", cursor: "pointer"}}> 
+            <Box onClick={() => addToCart({
+                  id: 1,
+                  name: "Tropical Fruit Trio (Rambutan)",
+                  quantity: 1,
+                  price: 100,
+                  img: "/product/productThumbnail1.png",
+                })} sx={{width: "100%", height: "auto", cursor: "pointer", padding: "10px 20px", display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "#164F49", marginBottom: "16px", cursor: "pointer"}}> 
                 <Box component={"img"} src={"/product/minus.png"}/>
-                <button style={{fontSize: "24px", lineHeight: "30.02px", color: "#ffffff", textAlign: "center", border: "none", outline: "none", background: "transparent"}}>Add to Cart</button>
+                <button  style={{fontSize: "24px", lineHeight: "30.02px", color: "#ffffff", textAlign: "center", border: "none", outline: "none", background: "transparent"}}>Add to Cart</button>
                 <Box component={"img"} src={"/product/minus.png"}/>
             </Box>
 

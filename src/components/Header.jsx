@@ -8,7 +8,7 @@ import CartDrawer from "./CartDialog";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false)
-  const [openCart, setOpenCart] = useState(true)
+  const [openCart, setOpenCart] = useState(false)
 
   const toggleMenuOpen = () => {
     setOpenMenu(!openMenu)

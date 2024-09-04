@@ -1,7 +1,6 @@
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
-import { useState } from "react";
 
 const ReviewCart = ({name, productName, ratingText, ratingValue, date}) => {
 
