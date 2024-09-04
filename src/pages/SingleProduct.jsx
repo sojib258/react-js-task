@@ -43,6 +43,7 @@ const SingleProduct = () => {
 
         {/* Footer Section */}
         <Footer/>
+
       </Box>
     )
 }

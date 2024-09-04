@@ -4,12 +4,22 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import Link from "@mui/material/Link";
 import MenuDrawer from "./MenuDrawer";
+import CartDrawer from "./CartDialog";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false)
+  const [openCart, setOpenCart] = useState(true)
 
   const toggleMenuOpen = () => {
     setOpenMenu(!openMenu)
+  }
+
+  const handleOpenCart = () => {
+    setOpenCart(true)
+  }
+
+  const handleCloseCart = () => {
+    setOpenCart(false)
   }
 
 
@@ -97,7 +107,7 @@ const Header = () => {
       >
         <Box sx={{width: "18px", height: "18px", cursor: "pointer"}} component={"img"} src={"/header/search.png"}/>
         <Badge sx={{marginLeft: "16px"}}  badgeContent={0} color="success">
-          <Box sx={{width: "24px", height: "24px", cursor: "pointer"}} component={"img"} src={"/header/cart.png"}/>
+          <Box onClick={handleOpenCart} sx={{width: "24px", height: "24px", cursor: "pointer"}} component={"img"} src={"/header/cart.png"}/>
         </Badge>
 
         {/* This button will display none under medium screen */}
@@ -109,6 +119,9 @@ const Header = () => {
 
       {/* This is the Menu Drawer */}
       {openMenu && <MenuDrawer open={open} toggleMenuOpen={toggleMenuOpen}/>}
+      {/* This is the Cart Drawer */}
+      {openCart && <CartDrawer open={openCart} handleClickOpen={handleOpenCart} handleClose={handleCloseCart}/>}
+
     </Box>
   );
 };
