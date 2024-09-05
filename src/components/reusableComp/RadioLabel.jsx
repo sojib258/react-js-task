@@ -21,6 +21,11 @@ const RadioLabel = ({ options, selectedValue, onChange }) => {
                   '&.Mui-checked': {
                     color: "#164F49",
                   },
+                  width: {xs: "10px", sm: "auto"},
+                  height: "auto",
+                  '& .MuiSvgIcon-root': {
+            fontSize: {xs: "10px", sm: "12px", md: "14px", lg: "16px"},
+          },
                 }}
               />
             }
@@ -28,6 +33,7 @@ const RadioLabel = ({ options, selectedValue, onChange }) => {
               <Box
                 sx={{
                   color: selectedValue === option.value ? "#164F49" : "#2B354F",
+                  fontSize: {xs: "12px", sm: "16px"}
                 }}
               >
                 {option.label}

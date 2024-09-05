@@ -1,68 +1,16 @@
-
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import { Box, Typography } from "@mui/material";
 import ShoppingCart from "./reusableComp/ShoppingCart";
-import { useEffect, useState } from "react";
+import { useCart } from "../contextApi/CartContext";
+import LinearProgress from '@mui/material/LinearProgress';
 
 const CartDrawer = ({ open, handleClickOpen, handleClose }) => {
+  const { cart, addToCart, incrementQuantity, decrementQuantity, deleteCart } = useCart();
 
-  const [cart, setCart] = useState([]);
-
-
-  const product = [
-    {
-      id: 1,
-      name: "Tropical Fruit Trio (Rambutan)",
-      quantity: 2,
-      price: 100,
-      img: "/product/productThumbnail1.png",
-    },
-    {
-      id: 2,
-      name: "Tropical Fruit Trio (Rambutan)",
-      quantity: 2,
-      price: 100,
-      img: "/product/productThumbnail2.png",
-    },
-  ];
-
-
-    // Function to remove an item from the cart
-    const removeFromCart = (productId) => {
-        const updatedCart = cart.filter((item) => item.id !== productId);
-        setCart(updatedCart);
-      };
-
-
-        // Function to update the quantity of an item in the cart
-  const IncrementQuantity = (productId) => {
-    const updatedCart = cart.map((item) =>
-      item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
-    );
-    setCart(updatedCart);
-  };
-
-  const DecrementQuantity = (productId) => {
-    const updatedCart = cart.map((item) =>
-      item.id === productId ? { ...item, quantity: item.quantity - 1 } : item
-    );
-    setCart(updatedCart);
-  };
-
-
-
-//   Load cart data from localStorage
-  useEffect(() => {
-    const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCart(savedCart);
-  }, [])
-
-//   Save cart data to localStorage whenever cart state changes
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
-
+  const subTotal = cart.reduce((accumulator, item) => {
+    return accumulator + item.price * item.quantity;
+  }, 0).toFixed(2);
   return (
     <>
       <Dialog
@@ -73,7 +21,7 @@ const CartDrawer = ({ open, handleClickOpen, handleClose }) => {
       >
         <Box
           sx={{
-            width: { xs: "auto", md: "380px" },
+            width: { xs: "auto", sm: "380px" },
             height: "100vh",
             display: "flex",
             flexDirection: "column",
@@ -115,6 +63,14 @@ const CartDrawer = ({ open, handleClickOpen, handleClose }) => {
               Add items worth Tk 30 for free shopping
             </Typography>
 
+            <Box sx={{ width: '100%', padding: "10px 16px", }}>
+            <LinearProgress variant="determinate" value={75} sx={{ height: 10, borderRadius: 5,  backgroundColor: '#d9d9d9',
+          '& .MuiLinearProgress-bar': {
+            backgroundColor: '#164F49', 
+            borderRadius: '0 5px 5px 0',
+          }, }} />
+            </Box>
+
             <Typography
               sx={{
                 fontSize: "15px",
@@ -126,7 +82,7 @@ const CartDrawer = ({ open, handleClickOpen, handleClose }) => {
               Added items ({cart.length} Items)
             </Typography>
 
-            {/* Actual Product */}
+            {/* Actual Cart Product */}
             <Box>
               {cart.map((item) => (
                 <Box
@@ -134,12 +90,15 @@ const CartDrawer = ({ open, handleClickOpen, handleClose }) => {
                   sx={{ padding: "16px", borderBottom: "1px solid #F3F3EF" }}
                 >
                   <ShoppingCart
+                    id={item.id}
                     img={item.img}
                     name={item.name}
                     price={item.price}
                     quantity={item.quantity}
-                    incrementQuantity={IncrementQuantity}
-                    decrementQuantity={DecrementQuantity}
+                    addToCart={addToCart}
+                    decrementQuantity={decrementQuantity}
+                    incrementQuantity={incrementQuantity}
+                    deleteCart={deleteCart}
                   />
                 </Box>
               ))}
@@ -181,7 +140,7 @@ const CartDrawer = ({ open, handleClickOpen, handleClose }) => {
                   color: "#001E00",
                 }}
               >
-                Tk. 641
+                Tk. {subTotal}
               </Typography>
             </Box>
             <Box sx={{ padding: "0px 16px" }}>
@@ -211,5 +170,3 @@ const CartDrawer = ({ open, handleClickOpen, handleClose }) => {
 };
 
 export default CartDrawer;
-
-

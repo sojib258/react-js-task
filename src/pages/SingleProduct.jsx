@@ -8,17 +8,26 @@ import ConsultationSection from "../components/Consultation";
 import PromotionalInfo from "../components/PromotionalInfo";
 import Footer from "../components/Footer";
 import ProductDetails from "../components/ProductDetails";
+import TopHeader from "../components/TopHeader";
+import BreadCrumb from "../components/BreadCrumb";
 
 
 const SingleProduct = () => {
 
-
-
     return (
       <Box> 
+        {/* Top Header Section */}
+        <TopHeader/>
+
         {/* Header Section */}
-        <Header/>
+        <Box sx={{ position: 'sticky', top: 0, zIndex: 1000 }}>
+          <Header />
+        </Box>
+
         {/* Product Section */}
+
+        {/* Breadcrumb */}
+        <BreadCrumb/>
 
         {/* Product Details Section */}
         <ProductDetails/>

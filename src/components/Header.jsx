@@ -3,12 +3,14 @@ import Badge from "@mui/material/Badge";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import Link from "@mui/material/Link";
+import { useCart } from "../contextApi/CartContext";
 import MenuDrawer from "./MenuDrawer";
 import CartDrawer from "./CartDialog";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false)
   const [openCart, setOpenCart] = useState(false)
+  const {cartLength} = useCart()
 
   const toggleMenuOpen = () => {
     setOpenMenu(!openMenu)
@@ -21,8 +23,6 @@ const Header = () => {
   const handleCloseCart = () => {
     setOpenCart(false)
   }
-
-
 
   const pages = [
     {
@@ -56,6 +56,7 @@ const Header = () => {
         justifyContent: "space-between",
         alignItems: "center",
       }}
+      component={"header"}
     >
       {/*logo area*/}
       <Link
@@ -106,7 +107,7 @@ const Header = () => {
         }}
       >
         <Box sx={{width: "18px", height: "18px", cursor: "pointer"}} component={"img"} src={"/header/search.png"}/>
-        <Badge sx={{marginLeft: "16px"}}  badgeContent={0} color="success">
+        <Badge sx={{marginLeft: "16px"}}  badgeContent={cartLength} color="success">
           <Box onClick={handleOpenCart} sx={{width: "24px", height: "24px", cursor: "pointer"}} component={"img"} src={"/header/cart.png"}/>
         </Badge>
 

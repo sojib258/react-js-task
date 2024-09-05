@@ -1,12 +1,13 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box"
-import { Button } from "@mui/material";
-import { Scale } from "@mui/icons-material";
+import toast from 'react-hot-toast';
+import { useCart } from "../../contextApi/CartContext";
 
 
 
+const ProductCart = ({id, name, paragraph, amount, weight, imgSrc}) => {
+  const {addToCart} = useCart()
 
-const ProductCart = ({heading, paragraph, amount, weight, imgSrc}) => {
   return (
     <Box> 
       
@@ -16,13 +17,22 @@ const ProductCart = ({heading, paragraph, amount, weight, imgSrc}) => {
         transform: "scale(1.4)",
         }}}/>
 
-        <Box title="Add to Cart" component={"img"} src={"/relatedProduct/plus.png"} sx={{width: "40px", height: "40px", position: "absolute", top: "16px", right: "16px", cursor: "pointer"}}/>
+        <Box onClick={() => {
+          addToCart({
+            id: id,
+            name: name,
+            quantity: 1,
+            price: amount,
+            img: imgSrc,
+          });
+          toast.success(`${name} added to cart!`); // Toast message
+        }} title="Add to Cart" component={"img"} src={"/relatedProduct/plus.png"} sx={{width: "40px", height: "40px", position: "absolute", top: "16px", right: "16px", cursor: "pointer"}}/>
       </Box>
 
       {/* Heading Wrapper */}
       <Box sx={{display: "flex", justifyContent: "space-between", alignItems: "center", height: "auto", width: "100%", padding: "16px 0px 8px 0px"}}> 
         <Typography component={"h2"} sx={{fontSize: "20px", lineHeight: "25.02px", color: "#2B354F"}}> 
-        {heading}
+        {name}
         </Typography>
 
         <Typography component={"h2"} sx={{fontSize: "20px", lineHeight: "24.14px", color: "#2B354F", fontStyle: "italic",fontWeight: "600"}}> 

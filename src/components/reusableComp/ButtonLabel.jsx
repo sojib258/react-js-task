@@ -6,14 +6,14 @@ const ButtonLabel = ({text, isSelected, onClick}) => {
     <Box
     onClick={onClick}
       sx={{
-        padding: "10px 20px",
+        padding: {xs: "4px 8px", sm: "10px 20px"},
         textAlign: "center",
         cursor: "pointer",
         transition: "border 0.3s ease",
         color: isSelected ? "#ffffff" : "#164F49",
         background: isSelected ? "#164F49" : "#ffffff",
         border: "1px solid #164F49",
-        fontSize: "16px", lineHeight: "20.02px"
+        fontSize: {xs: "12px", sm: "16px"}, lineHeight: "20.02px"
       }}
       > 
       {text}

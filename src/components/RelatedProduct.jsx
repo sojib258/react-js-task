@@ -9,24 +9,24 @@ const RelatedProduct = () => {
 
   const productCart = [
     {
-      id: 1,
-      heading: "Omega-3 Essential",
+      id: 21,
+      name: "Omega-3 Essential",
       amount: 200,
       paragraph: "Get brighter brain energy from nourishing fats and key vitamins in this clever blend.",
       weight: "100mg",
       imgSrc: "/relatedProduct/product1.jpg"
     },
     {
-        id: 2,
-        heading: "Heart",
+        id: 22,
+        name: "Heart",
         amount: 300,
         paragraph: "Nourish your heart with clinically studied AlmegaPL® EPA for supporting healthy heart and cardiovascular function",
         weight: "200mg",
         imgSrc: "/relatedProduct/product2.jpg",
       },
       {
-        id: 3,
-        heading: "Omega-3 Minis",
+        id: 23,
+        name: "Omega-3 Minis",
         amount: 400,
         paragraph: "Your favorite omega-3, now in an easier-to-swallow mini size.",
         weight: "300mg",
@@ -53,7 +53,7 @@ const RelatedProduct = () => {
         {productCart.map(item => (
             <Grid key={item.id} item xs={12} md={6} lg={4}>
               <Box sx={{marginBottom: {xs: "32px", lg: "0px"}}}>
-                <ProductCart amount={item.amount} heading={item.heading} paragraph={item.paragraph} weight={item.weight} imgSrc={item.imgSrc} />
+                <ProductCart id={item.id} amount={item.amount} name={item.name} paragraph={item.paragraph} weight={item.weight} imgSrc={item.imgSrc} />
               </Box>
             </Grid>
         ))}

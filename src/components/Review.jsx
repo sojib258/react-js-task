@@ -130,7 +130,7 @@ const Review = () => {
                 padding: "11px 40px 11px 10px",
                 backgroundColor: "#2B354F",
                 position: "relative",
-                marginRight: "20px"
+                marginRight: "20px",
               }}
             >
               <input
