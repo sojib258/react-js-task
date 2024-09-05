@@ -1,16 +1,49 @@
-# Project Name
+# React-Js-Task
 
-## Installation Process
+## Description
+this is a simple task project from thinkcrypt.io
 
-1. Download the project files.
-2. Navigate to the project folder:
+## Table of Contents
+- [liveDemo](#liveDemo)
+- [Installation Process](#liveDemo)
+- [Focus Point](#focus)
+- [Technologies Used](#technologies-used)
+- [Screenshots](#screenshots)
+
+- [Installation](#installation)
+
+## liveDemo
+- [Live Demo](https://react-js-task-weld.vercel.app/)
+
+
+## Installation
+
+### Prerequisites
+- Node.js
+- npm or yarn
+
+
+### Steps
+1. **Clone the repository:**
    ```bash
-   cd path/to/project
+   git clone https://github.com/sojib258/react-js-task.git
+   cd react-js-task
+
+   
+2. **Install dependencies:**
+   ```bash
+   npm install or yarn install (preferred yarn)
 
 
-   yarn install
+## Focus Point
+- Code Quality
+- Design
+- Functionality
 
 
+## Technologies Used
+- React
+- Material UI
 
 
 
